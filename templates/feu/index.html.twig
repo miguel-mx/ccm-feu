@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Feu index{% endblock %}
+
+{% block body %}
+    <h1>Feu index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Datos</th>
+                <th>Firma</th>
+                <th>CreatedAt</th>
+                <th>UserId</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for feu in feus %}
+            <tr>
+                <td>{{ feu.id }}</td>
+                <td>{{ feu.datos }}</td>
+                <td>{{ feu.firma }}</td>
+                <td>{{ feu.createdAt ? feu.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ feu.userId }}</td>
+                <td>
+                    <a href="{{ path('app_feu_show', {'id': feu.id}) }}">show</a>
+                    <a href="{{ path('app_feu_edit', {'id': feu.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_feu_new') }}">Create new</a>
+{% endblock %}

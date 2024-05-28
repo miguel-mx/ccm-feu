@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Feu{% endblock %}
+
+{% block body %}
+    <h1>Firma Electrónica Datos</h1>
+
+    {{ include('feu/_form.html.twig') }}
+
+    <a href="{{ path('app_feu_index') }}">back to list</a>
+{% endblock %}
